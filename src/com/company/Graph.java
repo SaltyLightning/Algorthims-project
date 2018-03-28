@@ -31,4 +31,12 @@ public class Graph {
     public DirectedEdge getEdge(int index){
         return edges.get(index);
     }
+
+    public int nodeCount(){
+        return nodes.size();
+    }
+
+    public int edgeCount(){
+        return edges.size();
+    }
 }

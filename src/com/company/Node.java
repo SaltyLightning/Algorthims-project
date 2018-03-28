@@ -1,6 +1,11 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Node {
+    public ArrayList<Node> incomingEdges;
+    public ArrayList<Node> outgoingEdges;
+
     public Node(int num) {
         this.num = num;
     }

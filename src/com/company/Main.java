@@ -15,6 +15,18 @@ import java.util.Queue;
 public class Main {
 
     public static void main(String[] args) {
+        Graph zachs = GenerateZachsGraph();
+        if (zachs.edgeCount() == 0){
+            System.out.println("Failed to initialize Zachary's karate graph. Exiting...");
+            System.exit(1);
+        }
+        else {
+
+        }
+    }
+
+    private static Graph GenerateZachsGraph() {
+        Graph g = new Graph();
         try {
             File inputFile = new File("ZacharysKarateCllub\\zachary.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -24,35 +36,10 @@ public class Main {
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getElementsByTagName("node");
             System.out.println("----------------------------");
-            Graph g = new Graph();
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 org.w3c.dom.Node nNode = nList.item(temp);
-//                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
                     g.addNode(new Node(Integer.parseInt(eElement.getAttribute("id"))));
-                //                    System.out.println("Student roll no : "
-//                            + eElement.getAttribute("rollno"));
-//                    System.out.println("First Name : "
-//                            + eElement
-//                            .getElementsByTagName("firstname")
-//                            .item(0)
-//                            .getTextContent());
-//                    System.out.println("Last Name : "
-//                            + eElement
-//                            .getElementsByTagName("lastname")
-//                            .item(0)
-//                            .getTextContent());
-//                    System.out.println("Nick Name : "
-//                            + eElement
-//                            .getElementsByTagName("nickname")
-//                            .item(0)
-//                            .getTextContent());
-//                    System.out.println("Marks : "
-//                            + eElement
-//                            .getElementsByTagName("marks")
-//                            .item(0)
-//                            .getTextContent());
-//                }
             }
 
             nList = doc.getElementsByTagName("link");
@@ -67,8 +54,9 @@ public class Main {
             for (int i = 0; i < 50; i++) {
                 System.out.println("Current edge:" + g.getEdge(i));
             }
-
         } catch (Exception e) {
             e.printStackTrace();
-        }    }
+        }
+        return g;
+    }
 }
