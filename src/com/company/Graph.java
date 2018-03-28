@@ -4,15 +4,19 @@ import java.util.*;
 
 public class Graph {
     private ArrayList<Node> nodes;
-    private LinkedList<DirectedEdge> edges;
+    private ArrayList<DirectedEdge> edges;
 
     public Graph() {
         nodes = new ArrayList<>();
-        edges = new LinkedList<>();
+        edges = new ArrayList<>();
     }
 
     public void addNode(Node n){
         nodes.add(n);
+    }
+
+    public void addEdge(DirectedEdge e){
+        edges.add(e);
     }
     public Node getRandomNode(){
         Random r = new Random();
@@ -20,4 +24,11 @@ public class Graph {
         return nodes.get(x);
     }
 
+    public Node getNodeById(int i){
+        return nodes.get(0);
+    }
+
+    public DirectedEdge getEdge(int index){
+        return edges.get(index);
+    }
 }

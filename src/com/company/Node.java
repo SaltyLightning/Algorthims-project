@@ -14,4 +14,11 @@ public class Node {
     }
 
     private int num;
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "num=" + num +
+                '}';
+    }
 }

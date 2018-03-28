@@ -54,8 +54,18 @@ public class Main {
 //                            .getTextContent());
 //                }
             }
+
+            nList = doc.getElementsByTagName("link");
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+                org.w3c.dom.Node nNode = nList.item(temp);
+                Element eElement = (Element) nNode;
+                Node origin = new Node(Integer.parseInt(eElement.getAttribute("source")));
+                Node target = new Node(Integer.parseInt(eElement.getAttribute("target")));
+                int value = Integer.parseInt(eElement.getAttribute("value"));
+                g.addEdge(new DirectedEdge(origin, target, value));
+            }
             for (int i = 0; i < 50; i++) {
-                System.out.println("Current node:" + g.getRandomNode().getNum());
+                System.out.println("Current edge:" + g.getEdge(i));
             }
 
         } catch (Exception e) {
